@@ -1,0 +1,136 @@
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            日常运维
+            <small>
+                <i class="icon-double-angle-right"></i>
+               DB数据查询
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+<div class="row">
+
+
+  <div class="col-sm-2"> 
+
+  <div class="widget-box"> 
+   <div class="widget-header header-color-blue2"> 
+    <h4 class="lighter smaller">Choose Tables</h4> 
+   </div> 
+   <div class="widget-body"> 
+    <div class="widget-main padding-8"> 
+     <div id="tree" class="tree tree-selectable">
+      <div class="tree-folder" style="display:none;"> 
+       <div class="tree-folder-header"> 
+        <i class="icon-plus"></i> 
+        <div class="tree-folder-name"></div> 
+       </div> 
+       <div class="tree-folder-content"></div> 
+       <div class="tree-loader" style="display: none;"></div> 
+      </div> 
+      <div class="tree-item" style="display:none;"> 
+       <i class="icon-remove"></i> 
+       <div class="tree-item-name"></div> 
+      </div>
+      <div class="tree-folder" style="display: block;"> 
+       <div class="tree-folder-header"> 
+        <i class="icon-minus"></i> 
+        <div id="tree_folder_name"   class="tree-folder-name">
+         请选择数据库...
+        </div> 
+       </div> 
+       <div id="tree_content_html"  class="tree-folder-content" style="display: block;">
+
+
+
+       </div> 
+       <div class="tree-loader" style="display: none;">
+        <div class="tree-loading">
+         <i class="icon-refresh icon-spin blue"></i>
+        </div>
+       </div> 
+      </div>
+     </div> 
+    </div> 
+   </div> 
+  </div>
+
+
+
+
+  </div>
+
+
+  <div class="col-xs-10">
+      <form class="form-horizontal" role="form" method="GET" action="">
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-2">数据库选择</label>
+              <div class="col-sm-7" id="city_china_val">
+                <select class="project cxselect"  data-value="请选择项目" data-first-title="选择项目" style="">
+                    <option value="0">请选择项目</option>
+                </select>
+                <select class="version cxselect" data-value="请选择版本" data-first-title="选择版本" style="">
+                    <option value="0">请选择版本</option>
+                </select>
+                <select class="product cxselect" data-value="" data-first-title="选择产品" style="">
+                    <option value="0">请选择产品</option>
+                </select>
+                <select id="dbname" name="dbname" onchange="get_db_tables(event);" class="dbname cxselect" data-value="" data-first-title="选择数据库" style="">
+                    <option value="0">请选择数据库</option>
+                </select>
+            </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-tags">查询选项</label>
+              <div class="col-sm-7">
+                   <select id="vertical" name="vertical" class="form-control">
+                     <option value="default">default</option>
+                     <option value="vertical">vertical</option>
+                   </select> 
+              </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-tags">SQL</label>
+              <div class="col-sm-7">
+                    <textarea id="sql" class="form-control" rows="6"></textarea>
+              </div>
+          </div>
+          <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                  <button onclick="get_db_tables(event);" class="btn btn-info" type="button">
+                      <i class="icon-ok bigger-110"></i>
+                      Submit
+                  </button>
+                  &nbsp; &nbsp; &nbsp;
+                  <button class="btn" type="reset">
+                      <i class="icon-undo bigger-110"></i>
+                      Reset
+                  </button>
+              </div>
+          </div>
+      </form>
+
+
+<h3 id="dbselect_status" class="header smaller lighter grey" style="display:none;">
+    <i class="icon-spinner icon-spin orange bigger-125"></i>
+    <small></small>
+</h3>
+
+               <div class="widget-main">
+                   <pre id="stdout" class="prettyprint linenums" style="display: none;">
+                   </pre>
+
+                <div id="stderr" class="alert alert-danger" style="display: none;">
+                </div>
+               </div>
+
+  </div>
+</div>
+      <!-- PAGE CONTENT ENDS -->
+  </div><!-- /.col -->
+
+</div>
+</div>

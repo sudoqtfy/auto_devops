@@ -1,0 +1,7 @@
+{% load crispy_forms_tags %}
+<form class="form-horizontal" role="form" method="POST" action="{{request_path}}">
+    {% crispy form form.helper %}
+</form>
+<script>
+    $(".chosen-select").chosen({width: '100%'});
+</script>

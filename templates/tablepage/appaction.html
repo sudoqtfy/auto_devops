@@ -1,0 +1,101 @@
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            日常运维
+            <small>
+                <i class="icon-double-angle-right"></i>
+               应用启停
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+
+<div class="row">
+  <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+
+      <form class="form-horizontal appaction" role="form[role]" method="POST" action="{% url 'appaction_ajax' %}">
+           {% csrf_token %}
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-1">请输入用户名 </label>
+              <div class="col-sm-4">
+                  <input type="text" name="username" value="root" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5">
+              </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-2">请输入密码</label>
+              <div class="col-sm-4">
+                  <input type="password" name="password" id="form-field-2" placeholder="Password" class="col-xs-10 col-sm-5">
+              </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-2">请输入主机地址</label>
+              <div class="col-sm-4">
+                  <input type="text" name="host" id="form-field-2" placeholder="Host"  class="col-xs-8 col-sm-5">
+              </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-2">请输入端口</label>
+              <div class="col-sm-4">
+                  <input type="text" name="port" id="form-field-2" placeholder="Port" value="22" class="col-xs-8 col-sm-5">
+              </div>
+          </div>
+          <div class="space-4"></div>
+          <div class="form-group">
+              <label class="col-sm-3 control-label no-padding-right" for="form-field-tags">请输入执行命令</label>
+              <div class="col-sm-7">
+                    <textarea id="command" name="command" class="form-control" rows="6"></textarea>
+              </div>
+          </div>
+          <div class="clearfix form-actions">
+              <div class="col-md-offset-3 col-md-9">
+                  <button onclick="appaction_handler(event)"  class="btn btn-info" type="button">
+                      <i class="icon-ok bigger-110"></i>
+                      Run
+                  </button>
+                  &nbsp; &nbsp; &nbsp;
+                  <button class="btn" type="reset">
+                      <i class="icon-undo bigger-110"></i>
+                      Reset
+                  </button>
+              </div>
+          </div>
+          <div class="hr hr-24"></div>
+          <!-- /row -->
+      </form>
+          <div class="space-24"></div>
+          <!-- /row -->
+<h3 id="icon-spinner" class="header smaller lighter grey" style="display:none">
+    <i class="icon-spinner icon-spin orange bigger-125"></i>
+</h3>
+
+<div class="row" >
+  <div class="col-xs-12">
+        <div class="alert alert-danger" id="stderr" style="display:none">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="icon-remove"></i>
+            </button>
+
+            <strong>
+                <i class="icon-remove"></i>
+                Oh snap!
+            </strong>
+            <br>
+   </div>
+
+     <pre class="prettyprint linenums" id="stdout" style="display:none">
+     </pre>
+
+
+
+
+  </div>
+</div>
+
+      <!-- PAGE CONTENT ENDS -->
+  </div><!-- /.col -->
+ </div>
+</div>

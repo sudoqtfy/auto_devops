@@ -1,0 +1,7 @@
+{% if message.execute_status == '1' %}
+[Asiainfo] DB Change Request Rejected
+{% elif message.execute_status == '2' %}
+[Asiainfo] DB Change Request Allow
+{% else %}
+[Aisainfo] DB Change Request
+{% endif %}

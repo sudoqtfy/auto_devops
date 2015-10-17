@@ -1,0 +1,28 @@
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="dataTables_info" id="sample-table-2_info">Showing 1 to 10 of 23 entries</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="dataTables_paginate paging_bootstrap">
+                        <ul class="pagination">
+                            {% if posts.has_previous %}
+                            <li class="prev"><a href="?page={{ posts.previous_page_number }}{% if query %}{{query}}{% endif %}"><i class="icon-double-angle-left"></i></a></li>
+                            {% else %}
+                            <li class="prev disabled"><a href="#"><i class="icon-double-angle-left"></i></a></li>
+                            {% endif %}
+                            {% if posts.number|add:-1 > 0 %}
+                             <li><a href="?page={{ posts.number|add:-1 }}{% if query %}{{query}}{% endif %}">{{ posts.number|add:-1 }}</a></li>
+                             {% endif %}
+
+                            <li class="active"><a href="?page={{ posts.number }}{% if query %}{{query}}{% endif %}">{{ posts.number }}</a></li>
+                                {% if posts.number < posts.paginator.num_pages %}
+                                <li><a href="?page={{ posts.number|add:1 }}{% if query %}{{query}}{% endif %}">{{ posts.number|add:1 }}</a></li>
+                                {% endif %}
+                            {% if posts.has_next %}
+                            <li class="next"><a href="?page={{ posts.next_page_number }}{% if query %}{{query}}{% endif %}"><i class="icon-double-angle-right"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,37 @@
+{% load core_extras %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+<body>
+    <div>
+        <p>申请人: {{ message.user.get_full_name }}</p>
+        <p>
+        申请状态: 
+        {% if message.execute_status == '1' %}
+            已撤回
+        {% elif message.execute_status == '2' %}
+            已通过
+        {% else %}
+            待审核
+        {% endif %}
+        </p>
+        <p>申请时间: {{ message.datetime | date:"Y-m-d H:i:s"}}</p>
+        <p>
+        {% if message.execute_status == '2' %}
+            <h3>执行结果:</h3>
+                <ul style="list-style-type:none;">
+                    {% if  message.execute_result%}
+                    {% message_html_display message.execute_result%}
+                    {% endif %}
+                </ul>
+        {% else %}
+            <h3> sql语句:</h3>
+                <ol>
+                    {% message_html_display message.sql html=False %}
+                </ol>
+        {% endif %}
+        </p>
+    </div>
+</body>
+</html>

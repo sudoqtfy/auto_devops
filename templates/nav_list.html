@@ -1,0 +1,143 @@
+{% load core_extras %}
+					<ul class="nav nav-list">
+                        <li {% if not section %}class="active"{% endif %}>
+							<a href="/">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 控制台 </span>
+							</a>
+						</li>
+                        {% if current_user.is_superuser %}
+                        <li>
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-list"></i>
+								<span class="menu-text">系统管理</span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu" {% sys_block_func section=section %}>
+                                <li {% if section == 'user' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='user' %}">
+										<i class="icon-double-angle-right"></i>
+										用户管理
+									</a>
+								</li>
+
+								<li {% if section == 'project' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='project' %}">
+										<i class="icon-double-angle-right"></i>
+										项目管理
+									</a>
+								</li>
+								<li {% if section == 'version' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='version' %}">
+										<i class="icon-double-angle-right"></i>
+										版本管理
+									</a>
+								</li>
+								<li {% if section == 'product' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='product' %}">
+										<i class="icon-double-angle-right"></i>
+										产品管理
+									</a>
+								</li>
+								<li {% if section == 'dbserver' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='dbserver' %}">
+										<i class="icon-double-angle-right"></i>
+										数据库管理
+									</a>
+								</li>
+							</ul>
+						</li>
+
+
+						<li>
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-desktop"></i>
+								<span class="menu-text">日常运维</span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu" {% db_block_func section=section %}>
+
+								<li >
+									<a href="#" class="dropdown-toggle">
+										<i class="icon-double-angle-right"></i>
+										DB变更
+										<b class="arrow icon-angle-down"></b>
+									</a>
+
+									<ul class="submenu" {% db_block_func section=section %}>
+										<li {% if section == 'dbaction' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbaction' %}">
+												<i class="icon-leaf"></i>
+											 DB变更
+											</a>
+										</li>
+										<li {% if section == 'dbsearch' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbsearch' %}">
+												<i class="icon-leaf"></i>
+											 DB变更查询
+											</a>
+										</li>
+										<li {% if section == 'dbselect' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbselect' %}">
+												<i class="icon-leaf"></i>
+											 DB数据查询
+											</a>
+										</li>
+									</ul>
+								</li>
+								<li {% if section == 'appaction' %}class="active"{% endif %}>
+                                <a href="{% url 'container_page' section='appaction' %}">
+										<i class="icon-double-angle-right"></i>
+										应用启停
+									</a>
+								</li>
+							</ul>
+						</li>
+                        {% else %}
+						<li>
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-desktop"></i>
+								<span class="menu-text">日常运维</span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu" {% db_block_func section=section %}>
+
+								<li >
+									<a href="#" class="dropdown-toggle">
+										<i class="icon-double-angle-right"></i>
+										DB变更
+										<b class="arrow icon-angle-down"></b>
+									</a>
+
+									<ul class="submenu" {% db_block_func section=section %}>
+										<li {% if section == 'dbaction' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbaction' %}">
+												<i class="icon-leaf"></i>
+											 DB变更
+											</a>
+										</li>
+										<li {% if section == 'dbsearch' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbsearch' %}">
+												<i class="icon-leaf"></i>
+											 DB变更查询
+											</a>
+										</li>
+										<li {% if section == 'dbselect' %}class="active"{% endif %}>
+                                        <a href="{% url 'container_page' section='dbselect' %}">
+												<i class="icon-leaf"></i>
+											 DB数据查询
+											</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+                        {% endif %}
+
+					</ul><!-- /.nav-list -->

@@ -1,0 +1,62 @@
+{% load core_extras %}
+<div class="modal-dialog" style="width:800px;">
+   <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true">×
+         </button>
+         <h4 class="modal-title" id="myModalLabel">
+           详情页
+         </h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="header smaller lighter green">
+                    <i class="icon-bullhorn"></i>
+                {% if dbactionres.dbaction.execute_status == 2 %}
+                执行结果
+                {% else %}
+                SQL语句
+                {% endif %}
+                </h3>
+               {% if dbactionres.dbaction.execute_status == 2 %}
+                <ul class="list-unstyled spaced">
+                    {% dbaction_result_display dbactionres.execute_result %}
+                </ul>
+
+                {% else %}
+                    <form role="allow" method="POST" action="{% url 'dbaction_ajax' id=dbactionres.dbaction.id execute_status=2 %}">
+                        {% csrf_token %}
+                    </form>
+                    <form role="reject" method="POST" action="{% url 'dbaction_ajax' id=dbactionres.dbaction.id execute_status=1 %}">
+                        {% csrf_token %}
+                    </form>
+                <ol>
+                    {% dbaction_sql_display dbactionres.dbaction.sql %}
+                </ol>
+                {% endif %}
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+         {% if current_user.is_superuser == 1 %}
+         {% if dbactionres.dbaction.execute_status == 0 %}
+         <button type="button" class="btn btn-default reject"
+            data-dismiss="modal">
+            撤销
+         </button>
+         <button type="button" class="btn btn-default allow"
+            data-dismiss="modal">
+            通过
+         </button>
+         {% endif %}
+         {% endif %}
+         <button type="button" class="btn btn-default cancle"
+            data-dismiss="modal">
+            Close
+         </button>
+      </div>
+   </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

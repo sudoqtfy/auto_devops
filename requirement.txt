@@ -1,0 +1,11 @@
+django==1.6.7
+django-timezone-field
+pycrypto==2.6.1
+django-pgcrypto==1.1.1
+mysql-python==1.2.5
+django-crispy-forms==1.4.0
+mysql-connector-python
+xlwt
+paramiko
+gunicorn
+South==0.8.4

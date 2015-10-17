@@ -1,0 +1,22 @@
+{% load core_extras %}
+申请人: {{ message.user.get_full_name }}
+申请状态: 
+{% if message.execute_status == '1' %}
+    已撤回
+{% elif message.execute_status == '2' %}
+    已通过
+{% else %}
+    待审核
+{% endif %}
+申请时间: {{ message.datetime|date:"Y-m-d H:i:s" }}
+{% if message.execute_status == '2' %}
+执行结果:
+{% if  message.execute_result%}
+{% message_text_display message.execute_result %}
+{% endif %}
+{% else %}
+sql语句:
+{% message_text_display message.sql res=False %}
+{% endif %}
+
+
