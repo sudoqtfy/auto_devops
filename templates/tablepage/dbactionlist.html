@@ -8,12 +8,6 @@
             </small>
             <button type="button" class="btn btn-success btn-sm pull-right"
               data-toggle="modal"
-              data-remote="{% url 'modal_sql_script' %}"
-              data-target="#large-modal">
-              <i class="icon-pencil align-top bigger-125"></i>提交sql脚本
-            </button>
-            <button type="button" class="btn btn-success btn-sm pull-right"
-              data-toggle="modal"
               data-remote="{% url 'modal_form' app='dbapp' form_name='dbaction' %}"
               data-target="#large-modal">
               <i class="icon-pencil align-top bigger-125"></i>DB变更申请
